@@ -8,6 +8,7 @@ var Route = ReactRouter.Route;
 var IndexRoute = ReactRouter.IndexRoute;
 var hashHistory = ReactRouter.hashHistory;
 
+var PromptContainer = require('../containers/PromptContainer');
 var Main = require('../components/Main');
 var Home = require('../components/Home');
 
@@ -18,7 +19,8 @@ var routes = (
         // this.props.children on Main will be the component from the Route!
         // React Router keeps track of which Component will be activated
         // through this.props.children.
-
+      <Route path='playerOne' header='Player One' component={PromptContainer} />
+      <Route path='playerTwo/:playerOne' header='Player Two' component={PromptContainer} />
     </Route>
   </Router>
 );
