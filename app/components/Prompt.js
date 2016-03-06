@@ -1,34 +1,45 @@
 var React = require('react');
+var PropTypes = React.PropTypes;
 var transparentBg = require('../styles').transparentBg;
 
+/* Functional Stateless Components
+    We now only render UI with the function instead of React.createClass because it has no state
+    and put PropTypes on the function itself.
+    Now presentational Components can just be functions!
+*/
 
-var Prompt = React.createClass({
-  render: function() {
-    return (
-      <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
-        <h1> {this.props.header} </h1>
-        <div className="col-sm-12">
-          <form onSubmit={this.props.onSubmitUser}>
-            <div className="form-group">
-              <input
-                className="form-control"
-                placeholder="Github Username"
-                onChange={this.props.onUpdateUser}
-                value={this.props.username}
-                type="text" />
-            </div>
-            <div className="form-group col-sm-4 col-sm-offset-4">
-              <button
-                className="btn btn-block btn-success"
-                type="submit">
-                  Continue
-              </button>
-            </div>
-          </form>
-        </div>
+function Prompt(props) {
+  return (
+    <div className="jumbotron col-sm-6 col-sm-offset-3 text-center" style={transparentBg}>
+      <h1> {props.header} </h1>
+      <div className="col-sm-12">
+        <form onSubmit={props.onSubmitUser}>
+          <div className="form-group">
+            <input
+              className="form-control"
+              placeholder="Github Username"
+              onChange={props.onUpdateUser}
+              value={props.username}
+              type="text" />
+          </div>
+          <div className="form-group col-sm-4 col-sm-offset-4">
+            <button
+              className="btn btn-block btn-success"
+              type="submit">
+                Continue
+            </button>
+          </div>
+        </form>
       </div>
-    )
-  }
-});
+    </div>
+  )
+}
+
+Prompt.propTypes = {
+  header: PropTypes.string.isRequired,
+  onUpdateUser: PropTypes.func.isRequired,
+  onSubmitUser: PropTypes.func.isRequired,
+  username: PropTypes.string.isRequired
+}
 
 module.exports = Prompt;
