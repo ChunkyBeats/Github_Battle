@@ -5,8 +5,7 @@ var transparentBg = require('../styles').transparentBg;
 /* Functional Stateless Components
     We now only render UI with the function instead of React.createClass because it has no state
     and put PropTypes on the function itself.
-    Now presentational Components can just be functions!
-*/
+    Now presentational Components can just be functions! */
 
 function Prompt(props) {
   return (
